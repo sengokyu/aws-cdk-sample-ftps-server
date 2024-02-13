@@ -2,7 +2,7 @@
   "name": "ex-ftps-server",
   "version": "0.1.0",
   "bin": {
-    "ex-ftps-server": "bin/ex-ftps-server.js"
+    "ex-ftps-server": "index.ts"
   },
   "scripts": {
     "build": "tsc",
