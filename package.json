@@ -8,6 +8,7 @@
     "cdk": "dotenv -- cdk"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.133",
     "@types/jest": "^29.5.11",
     "@types/node": "20.11.5",
     "aws-cdk": "2.122.0",
