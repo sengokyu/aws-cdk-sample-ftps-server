@@ -13,8 +13,8 @@ class LambdaHandler implements LambdaInterface {
   public handler(
     event: CustomIdpEvent,
     _context: unknown
-  ): Promise<CustomIdpResponse | undefined> {
-    return main(event, secretId, iamRoleArn, bucketName);
+  ): Promise<CustomIdpResponse> {
+    return main(event, { secretId, iamRoleArn, bucketName });
   }
 }
 

@@ -1,17 +1,21 @@
 import { Logger } from "@aws-lambda-powertools/logger";
 import { CustomIdpEvent, CustomIdpResponse } from "../types";
-import { fetchSecretString } from "./utils";
-import * as ftpSessionPolicy from "../ftp-session-policy.json";
 import { verifyPassword } from "./credential-verifier";
+import { fetchSecretString } from "./utils";
+import ftpSessionPolicy = require("../ftp-session-policy.json");
 
 const logger = new Logger();
 
+interface mainArgs {
+  secretId: string;
+  iamRoleArn: string;
+  bucketName: string;
+}
+
 export const main = async (
   event: CustomIdpEvent,
-  secretId: string,
-  iamRoleArn: string,
-  bucketName: string
-): Promise<CustomIdpResponse | undefined> => {
+  { secretId, iamRoleArn, bucketName }: mainArgs
+): Promise<CustomIdpResponse> => {
   const userAndPassword = await fetchSecretString(secretId);
 
   if (!(event.username in userAndPassword)) {
