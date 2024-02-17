@@ -1,13 +1,34 @@
-# AWS Transfer family FTPS server sample
+# AWS CDK Sample - Transfer family FTPS server
 
-## Includes resource
+## Included resources
 
 - S3 bucket
-- Secret manager
+- Secret
 - IAM role
 - Lambda function
 - VPC
 - EIP
+
+## How to deploy
+
+Create a certificate.
+
+```bash
+aws acm request-certificate --domain-name "ftps.server.host.name"
+```
+
+Create the .env file
+
+```bash
+cp .env.sample .env
+vi .env
+```
+
+Run cdk.
+
+```bash
+npm run cdk deploy
+```
 
 ## Environment variables
 
